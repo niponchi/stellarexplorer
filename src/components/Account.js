@@ -150,7 +150,7 @@ const Signers = props => (
     </thead>
     <tbody>
       {props.signers.map(signer => (
-        <tr key={signer.public_key}>
+        <tr key={signer.key}>
           <td>
             {signer.type === 'ed25519_public_key' && (
               <AccountLink account={signer.key} />
@@ -235,12 +235,12 @@ const AccountSummaryPanel = ({
             </Row>
           </Col>
           {has(knownAccounts, a.id) &&
-            knownAccounts[a.id].type !== 'inflation_pools' && (
+            knownAccounts[a.id].logo && (
               <Col md={2}>
                 <div style={{marginBottom: 10}}>
                   <Logo
-                    src={knownAccounts[a.id].logo}
-                    name={knownAccounts[a.id].name}
+                    type={knownAccounts[a.id].type}
+                    name={knownAccounts[a.id].logo}
                   />
                 </div>
               </Col>
